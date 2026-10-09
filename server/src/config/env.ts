@@ -43,6 +43,8 @@ export const env = {
   CLOUDINARY_API_KEY: (process.env.CLOUDINARY_API_KEY || '').trim(),
   CLOUDINARY_API_SECRET: (process.env.CLOUDINARY_API_SECRET || '').trim(),
   CLOUDINARY_URL: (process.env.CLOUDINARY_URL || '').trim(),
+  ASKEVA_TOKEN: (process.env.ASKEVA_TOKEN || '').trim(),
+  API_BASE_URL:(process.env.API_BASE_URL || '')
 };
 
 if (

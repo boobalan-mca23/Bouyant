@@ -94,7 +94,7 @@ export const HomePage: React.FC = () => {
                 <div className="flex items-center gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#E6EAF0] dark:border-slate-700 shadow-xs">
                   <Calendar className="w-4 h-4 text-[#0E8074] dark:text-teal-400" />
                   <span>
-                    {formatDisplayDate(featuredEvent.startDate)} – {formatDisplayDate(featuredEvent.endDate)}
+                     Start Date : {formatDisplayDate(featuredEvent.startDate)} – End Date : {formatDisplayDate(featuredEvent.endDate)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#E6EAF0] dark:border-slate-700 shadow-xs">

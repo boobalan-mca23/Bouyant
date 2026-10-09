@@ -8,6 +8,7 @@ import { TokenPayload } from '../../utils/jwt.js';
 import { EmailService } from '../../services/email.service.js';
 import { InvoicePdfService } from '../../services/InvoicePdfService.js';
 import { NotificationsService } from '../notifications/notifications.service.js';
+import { WhatsappService } from '../../services/whatsapp.service.js';
 import { generateReference } from '../../utils/reference.js';
 
 export class PaymentsService {
@@ -770,12 +771,21 @@ export class PaymentsService {
           console.error('⚠️ [ADMIN PAYMENT EMAIL FAILED]:', adminEmailErr?.message || adminEmailErr);
         }
 
-        // Dispatch notifications & admin alerts
-        NotificationsService.dispatchEvent({
-          event: 'PAYMENT_RECEIVED',
-          bookingId: booking.id,
-          paymentId: payment.id,
+        // Send WhatsApp Confirmation with Invoice attachment via AskEva
+        await WhatsappService.sendBookingConfirmation({
+          booking,
+          payment,
+          invoice,
+          paymentAmount: paymentAmount.toNumber(),
         });
+      
+
+        // // Dispatch notifications & admin alerts
+        // NotificationsService.dispatchEvent({
+        //   event: 'PAYMENT_RECEIVED',
+        //   bookingId: booking.id,
+        //   paymentId: payment.id,
+        // });
       } catch (err: any) {
         console.error('⚠️ [AFTER-PAYMENT SIDE EFFECT FAILED]:', err?.message || err);
       }
@@ -784,8 +794,6 @@ export class PaymentsService {
 
   return result.response;
 }
-
-
 
 static async createBalancePaymentOrder(
   bookingId: string,

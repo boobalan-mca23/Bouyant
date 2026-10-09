@@ -56,7 +56,7 @@ export const PublicNavbar: React.FC = () => {
             </nav>
 
             {/* Theme Switcher Button */}
-            <button
+            {/* <buttonl
               onClick={toggleTheme}
               className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center gap-1.5 text-xs font-medium"
               title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
@@ -66,7 +66,7 @@ export const PublicNavbar: React.FC = () => {
               ) : (
                 <Sun className="w-4 h-4 text-amber-400 hover:text-amber-300" />
               )}
-            </button>
+            </button> */}
 
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
